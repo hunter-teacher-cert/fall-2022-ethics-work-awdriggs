@@ -17,14 +17,19 @@ def find_name(line):
     return result
 
 
-f = open("names.txt")
+f = open("little_women.txt")
+
+names = []
 
 for line in f.readlines():
-    print(line)
-    print("name", find_name(line)) 
-    # result = find_name(line)
-    # if (len(result)>0):
+    # print(line)
+    # print("name", find_name(line)) 
+    result = find_name(line)
+    if (len(result)>0):
     #     print(result)
+        names.append(result)
+         
+print(names)
 
 # REGEX TESTS
 # working, but won't capture Dr. Adam Driggers
