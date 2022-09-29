@@ -5,9 +5,10 @@ def find_name(line):
 
     # multiple initials + names, not really working well
     # pattern = r"(([A-Z][a-z]+)(?:\s[A-Z][a-z]+)+)|((?:[A-Z]\.)+)\s[A-Z]\w+"
+    pattern = r"([A-Z][a-z]+(?:\.)?(?=\s[A-Z])(?:\s[A-Z][a-z]+)+)"
 
-    # multiple capitals together, ie. Billy Kid 
-    pattern = r"([A-Z][a-z]+(?=\s[A-Z])(?:\s[A-Z][a-z]+)+)"
+    # multiple capitals together, ie. Billy Kid
+    # pattern = r"([A-Z][a-z]+(?=\s[A-Z])(?:\s[A-Z][a-z]+)+)"
     result = re.findall(pattern,line)
 
     # add more lookups?
@@ -17,18 +18,18 @@ def find_name(line):
     return result
 
 
-f = open("little_women.txt")
+f = open("names.txt")
 
 names = []
 
 for line in f.readlines():
     # print(line)
-    # print("name", find_name(line)) 
+    # print("name", find_name(line))
     result = find_name(line)
     if (len(result)>0):
-    #     print(result)
+        #     print(result)
         names.append(result)
-         
+
 print(names)
 
 # REGEX TESTS
@@ -57,6 +58,9 @@ print(names)
 
 # full name, or multiple intials plus a name
 # (([A-Z][a-z]+)(?:\s[A-Z][a-z]+)+)|((?:[A-Z]\.)+)\s[A-Z]\w+
+
+# captures either a whole prefix or an initial
+# [A-Z][a-z]*(?:\.)?
 
 # referenced this...
 # https://stackoverflow.com/questions/9525993/get-consecutive-capitalized-words-using-regex
