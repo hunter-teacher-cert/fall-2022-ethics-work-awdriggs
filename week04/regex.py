@@ -18,7 +18,7 @@ def find_name(line):
     return result
 
 
-f = open("names.txt")
+f = open("little_women.txt")
 
 names = []
 
